@@ -1,0 +1,49 @@
+.swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 1rem;
+    width: 95%;
+    text-align: center;
+}
+.swiper-pagination-bullet {
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #333333;
+}
+.swiper-slide {
+  div {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    position: absolute;
+    background-color: rgb(3, 3, 26);
+  }
+  img {
+    top: 50%;
+    position: relative;
+    //transform: translate(0, -50%);
+  }
+  h3 {
+    width: 70%;
+    color: #fff;
+    margin: 0;
+    font-size: 0.5rem;
+    line-height: 1rem;
+    right: 5%;
+    bottom: 2.6rem;
+    text-align: right;
+    position: absolute;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    &:before {
+      content: "";
+      width: 3rem;
+      bottom: -0.6rem;
+      right: 0;
+      display: block;
+      position: absolute;
+      border: 2px solid yellow;
+    }
+  }
+}
