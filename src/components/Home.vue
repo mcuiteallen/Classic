@@ -5,7 +5,18 @@
         <!--<div class="row justify-content-center backgroundDiv">
           <img class="sopImg" src="/static/img/home/background.jpg">    
         </div> -->     
-             
+        <nav class="social">
+            <ul>
+                <li>
+                    <a :href="'tel:0926624664'"><i class="fas fa-phone" style="color: rgb(27 80 96);"></i></a>
+                    <a :href="'tel:0926624664'">0926-624664 </a>
+                </li>
+                <li>
+                    <a @click="openWindows()"><i class="fab fa-line" style="color: #07b53b;"></i></a>
+                    <a @click="openWindows()">ID: Qqaz12345678</a>
+                </li>                  
+            </ul>
+        </nav>               
         <div class="row justify-content-center logoDiv">
           <img class="logoImg" src="/static/img/home/logo.png" alt="估車先生">     
         </div>              
@@ -33,7 +44,7 @@
           <button type="button" class="btn btn-primary transactionBtn col-md-3"  @click="chooseMenu(2)" > 如何賣車 </button>          
           <button type="button" class="btn btn-primary sampleBtn col-md-3"  @click="chooseMenu(3)" > 相簿 </button>                 
         </div>            
-        <div class="row justify-content-center phoneDiv" >
+        <!--<div class="row justify-content-center phoneDiv" >
           <p ><a @click="openWindows()"><img class="lineButtonByPhone" src="/static/img/home/LINEIMG.png" alt="估車聯絡資訊"> </a>  </p>
           <p ><a :href="'tel:0926624664'"><img class="phoneButtonByPhone" src="/static/img/home/PHONEIMG.png" alt="估車聯絡資訊"></a> </p>                         
         </div> 
@@ -42,7 +53,7 @@
         </div> 
         <div class="row justify-content-center" >      
  
-        </div>     
+        </div>-->     
         <div class="row justify-content-center" > 
           <div class="promiseDiv col-md-4">
             <h3 style="color:rgb(51 121 137); margin-top: 50px;text-align:center;">關於<strong>估車先生</strong></h3>
@@ -366,9 +377,9 @@ export default {
     let regex = /gclid=/g;
     let match = regex.exec(href)
     if(match && match.length > 0){
-      self.clientSource = '來自Google廣告'
+      self.clientSource = 'A' //來自Google廣告
     }else{
-      self.clientSource = '來自seo自然排序'
+      self.clientSource = 'B' //來自seo自然排序
     }
     setInterval(function(){
       if(self.openBling){
@@ -486,7 +497,7 @@ export default {
             '里程: ' + carDetail.Milage + '\n' +
             '所在地: ' + carDetail.Locate + '\n' +
             '期望售出金額: ' + carDetail.PrePrice + '\n'  +
-            '客戶來源: ' + self.clientSource + '\n' 
+            '來源: ' + self.clientSource + '\n' 
           for(let i = 0 ; i < manyImg.length ; i++){
             let fd = new FormData();
             let tmpFile = manyImg[i]
@@ -527,6 +538,7 @@ export default {
                   if(lastest){
                     self.isLoading = false
                     //self.cancelModal()
+                    gtag_report_conversion();
                     Apis.MessageBox.Normal(
                       self,
                       '送出成功!!',
@@ -620,15 +632,11 @@ export default {
 }
 .logoImg{
   min-height: auto;
-  width: 20%;  
-  @media (max-width: 1024px){  
-    width: 20%; 
-  }
-  @media (max-width: 768px){    
-    width: 30%; 
-  }   
+  width: 313px; 
+  height: 312px;   
   @media screen and (max-height: 823px) and (max-width: 483px){  
-    width: 50%; 
+    width: 175px; 
+    height: 176px; 
   }   
 }
 .buttonImg{
@@ -1056,18 +1064,12 @@ p {
   margin-top: 5%;
   text-align: center;
   color: rgb(152, 152, 152);
-  font-weight:normal;
-  @media (max-width:1024px){
-    margin-top: 0%;
-  }
-  @media (max-width:768px){
-
-  }     
+  font-weight:normal; 
   @media (max-width:483px) {
-    margin-top: -5%;
+    margin-top: -10%;
   }   
   @media (max-width:320px) {
-    margin-top: -8%;
+    margin-top: -10%;
   }    
 }
 .promise { 
@@ -1089,4 +1091,79 @@ p {
   font-weight: bold;
   margin-left: 5%;  
 }
+  .social {
+    position: fixed;
+    top: 200px;
+    z-index: 5;
+    right: -270px;
+  }
+  .social a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 8px;
+  }
+  .social ul {
+    padding: 0px;
+    -webkit-transform: translate(0px, 0);
+    -moz-transform: translate(0px, 0);
+    -ms-transform: translate(0px, 0);
+    -o-transform: translate(0px, 0);
+    transform: translate(0px, 0);
+  }
+  .social ul li {
+    display: block;
+    margin: 5px 25px 0px 0px;
+    background: rgba(0, 0, 0, 0.36);
+    width: 300px;
+    text-align: left;
+    padding: 6px;
+    -webkit-border-radius: 30px 0px  0 30px;
+    -moz-border-radius: 30px 0px  0 30px;
+    border-radius: 30px 0px  0 30px;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+  }
+  .social ul li:hover {
+    -webkit-transform: translate(-150px, 0);
+    -moz-transform: translate(-150px, 0);
+    -ms-transform: translate(-150px, 0);
+    -o-transform: translate(-150px, 0);
+    transform: translate(-150px, 0);
+  }
+  .social ul li:hover a {
+    color: #fff;
+  }
+  .social ul li:hover i {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+  }
+  .social ul li i {
+    margin-left:0px;
+    color: #000;
+    background: #fff;
+    padding: 8px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    background: #ffffff;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 </style>

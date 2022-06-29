@@ -1,8 +1,8 @@
 let baseUrl
 if (process.env.NODE_ENV === 'development') {
   baseUrl = {
-    RMM: 'https://car.ak-platform.com',
-    //RMM: 'http://127.0.0.1:8084',
+    //RMM: 'https://car.ak-platform.com',
+    RMM: 'http://127.0.0.1:8084',
     }
 } else {
   baseUrl = {

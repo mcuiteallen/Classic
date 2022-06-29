@@ -19,6 +19,7 @@
     }
     gtag('js', new Date());
     gtag('config', 'UA-174263290-1');
+    gtag('config', 'AW-658593470');
   </script>  
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -27,6 +28,22 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KHQ8LCC');
   </script>
+  <!-- Event snippet for 估車表單 conversion page
+  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-658593470/6roKCOCit_MCEL6thboC',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>  
   <!-- End Google Tag Manager -->      
   <body>
     <div id="app"></div>
